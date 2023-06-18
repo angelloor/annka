@@ -1,0 +1,20 @@
+#General
+#
+dist/
+out/
+env/
+file_store/
+
+# OSX
+#
+.DS_Store
+*.env
+*.pem
+*.key
+*.crt
+*.p12
+
+# node.js
+#
+node_modules/
+package-lock.json

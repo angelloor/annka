@@ -1,0 +1,48 @@
+{
+	"name": "annka-backend",
+	"version": "1.0.0",
+	"description": "Desafíos annka",
+	"main": "index.js",
+	"scripts": {
+		"server-dev-ts": "set NODE_ENV=development&& ts-node-dev --respawn ./src/index.ts",
+		"tsc": "tsc",
+		"server-dev-js": "set NODE_ENV=development&& nodemon build/src/index.js",
+		"build": "webpack --mode production",
+		"server-pro": "set NODE_ENV=production&& nodemon dist/index.js",
+		"test": "jest --verbose"
+	},
+	"keywords": [],
+	"author": "Angel Loor",
+	"license": "MIT",
+	"dependencies": {
+		"csvtojson": "^2.0.10",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"multer": "^1.4.5-lts.1",
+		"nodemailer": "^6.6.1",
+		"pg": "^8.11.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.13.16",
+		"@types/dotenv": "^8.2.0",
+		"@types/express": "^4.17.13",
+		"@types/jest": "^29.5.2",
+		"@types/multer": "^1.4.7",
+		"@types/nodemailer": "^6.4.4",
+		"@types/pg": "^8.6.1",
+		"babel-loader": "^8.2.2",
+		"dotenv-webpack": "^7.0.2",
+		"fs": "*",
+		"http": "*",
+		"https": "^1.0.0",
+		"jest": "^29.5.0",
+		"nodemon": "^2.0.13",
+		"path": "^0.12.7",
+		"ts-jest": "^29.1.0",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^4.4.4",
+		"webpack": "^5.35.0",
+		"webpack-cli": "^4.6.0",
+		"webpack-node-externals": "^3.0.0"
+	}
+}

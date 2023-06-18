@@ -1,0 +1,37 @@
+type_document_partner,dni_partner,name_partner,last_name_partner,birthdate_partner,city_partner,province_partner,email_partner,phone_partner
+cedula,1600744443,Angel,Loor,06-10-1996,Puyo,Pastaza,angelloor.dev@gmail.com,+593998679628
+ruc,1234567890,María José,Pérez Sánchez,12-03-1985,Quito,Pichincha,mjperez@gmail.com,+593987654321
+passport,1234567889,John,Doe,25-07-1990,Cuenca,Azuay,johndoe@gmail.com,+593955555555
+cedula,1234567888,Luis,Andrade Gomez,18-09-1982,Manta,Manabí,landrade@gmail.com,+593944444444
+ruc,1234567887,Ana María,Ruiz Vargas,05-02-1995,Guayaquil,Guayas,anaruiz@gmail.com,+593933333333
+passport,1234567886,Pablo,Rodriguez,30-11-1988,Ibarra,Imbabura,pablorod@gmail.com,+593922222222
+cedula,1234567885,Maria,Lopez Vargas,15-06-1993,Quito,Pichincha,mlopez@gmail.com,+593911111111
+ruc,1234567884,Andres,Mendoza Valencia,22-08-1980,Cuenca,Azuay,andresmendoza@gmail.com,+593900000000
+passport,1234567883,Carla,Fernandez Jimenez,17-04-1987,Manta,Manabí,carlafdez@gmail.com,+593899999999
+cedula,1234567882,Diego,Chavez Alvarez,02-01-1992,Guayaquil,Guayas,diegochavez@gmail.com,+593888888888
+ruc,1234567881,Valeria,Suarez Delgado,29-05-1984,Ibarra,Imbabura,valeriasuarez@gmail.com,+593877777777
+passport,1234567880,Manuel,Garcia Ortega,24-12-1989,Quito,Pichincha,manuelgarcia@gmail.com,+593866666666
+cedula,1234567879,Gabriela,Peña Gutierrez,09-07-1994,Cuenca,Azuay,gabypena@gmail.com,+593855555555
+ruc,1234567878,Santiago,Ruiz Castro,04-03-1987,Manta,Manabí,santiagoruiz@gmail.com,+593844444444
+passport,1234567877,Daniela,Santos Alvarado,21-11-1982,Guayaquil,Guayas,danielasantos@gmail.com,+593833333333
+cedula,1234567876,Javier,Moreno Guzman,08-09-1997,Ibarra,Imbabura,javiermoreno@gmail.com,+593822222222
+ruc,1234567875,Valentina,Chávez Delgado,03-05-1986,Quito,Pichincha,valentinachavez@gmail.com,+593811111111
+passport,1234567874,Patricia,Torres Solano,20-02-1991,Cuenca,Azuay,ptorres@gmail.com,+593800000000
+cedula,1234567873,Fernando,Valencia Gomez,01-03-1984,Puyo,Pastaza,fernandovalencia@gmail.com,+593788888888
+ruc,1234567872,Sofia,Rodriguez Mendoza,16-12-1992,Quito,Pichincha,sofiarodriguez@gmail.com,+593777777777
+passport,1234567871,Carlos,Chávez Delgado,11-09-1987,Cuenca,Azuay,carloschavez@gmail.com,+593766666666
+cedula,1234567870,Isabella,Torres Suarez,26-05-1990,Manta,Manabí,isatorres@gmail.com,+593755555555
+ruc,1234567869,Laura,Andrade Garcia,31-01-1985,Guayaquil,Guayas,lauraandrade@gmail.com,+593744444444
+passport,1234567868,Miguel,Pérez Loor,06-07-1980,Ibarra,Imbabura,miguelperez@gmail.com,+593733333333
+cedula,1234567867,Valeria,Moreno Gutierrez,21-02-1995,Quito,Pichincha,valeriamoreno@gmail.com,+593722222222
+ruc,1234567866,Gonzalo,Fernandez Jimenez,16-11-1988,Cuenca,Azuay,gonzalofernandez@gmail.com,+593711111111
+passport,1234567865,Paula,Ruiz Castro,01-06-1993,Manta,Manabí,paularuiz@gmail.com,+593700000000
+cedula,1234567864,Roberto,Garcia Ortega,26-12-1982,Guayaquil,Guayas,robertogarcia@gmail.com,+593699999999
+ruc,1234567863,Andrea,Peña Gutierrez,11-07-1997,Ibarra,Imbabura,andreapena@gmail.com,+593688888888
+passport,1234567862,Lucas,Ruiz Delgado,26-03-1986,Quito,Pichincha,lucasruiz@gmail.com,+593677777777
+cedula,1234567861,Natalia,Santos Alvarado,11-11-1991,Cuenca,Azuay,nataliasantos@gmail.com,+593666666666
+ruc,1234567860,Rodrigo,Moreno Guzman,26-09-1996,Manta,Manabí,rodrigomoreno@gmail.com,+593655555555
+passport,1234567859,Ana Laura,Chávez Delgado,11-05-1983,Guayaquil,Guayas,analaurachavez@gmail.com,+593644444444
+cedula,1234567858,Daniel,Torres Solano,26-02-1988,Ibarra,Imbabura,danieltorres@gmail.com,+593633333333
+ruc,1234567857,Alejandra,Mendoza Valencia,11-08-1993,Quito,Pichincha,alejandramendoza@gmail.com,+593622222222
+passport,1234567856,Sebastián,Rodriguez Mendoza,26-04-1981,Cuenca,Azuay,srodriguez@gmail.com,+593611111
