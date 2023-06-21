@@ -1,12 +1,29 @@
 import { capitalize, map } from 'lodash';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import getColorByPokemonType from '../../utils/getColorByPokemonType';
 
 export default function StatisticsPokemon(props: any) {
-	const { statistcs } = props;
+	const { statistcs, type } = props;
+
+	const pokemonColor = getColorByPokemonType(type);
+
+	const colors: any = {
+		red: '#ff0000',
+		yellow: '#ffff00',
+		green: '#00ff00',
+		base: pokemonColor,
+	};
 
 	const barStyles = (num: any) => {
-		const color = num > 49 ? '#00ac17' : 'yellow';
+		const color =
+			num <= 30
+				? colors.red
+				: num <= 60
+				? colors.yellow
+				: num <= 90
+				? colors.green
+				: colors.base;
 		return {
 			backgroundColor: color,
 			width: `${num}%`,
@@ -15,7 +32,6 @@ export default function StatisticsPokemon(props: any) {
 
 	return (
 		<View style={styles.content}>
-			<Text style={styles.title}>Base Stats</Text>
 			{map(statistcs, (item, index) => (
 				<View key={index} style={styles.block}>
 					<View style={styles.blockTitle}>
@@ -36,8 +52,8 @@ export default function StatisticsPokemon(props: any) {
 const styles = StyleSheet.create({
 	content: {
 		paddingHorizontal: 20,
-		marginTop: 40,
-		marginBottom: 80,
+		marginBottom: 0,
+		paddingVertical: 10,
 	},
 	title: {
 		fontWeight: 'bold',

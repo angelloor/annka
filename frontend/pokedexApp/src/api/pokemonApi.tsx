@@ -40,3 +40,13 @@ export async function getPokemonInformationById(id: string) {
 		throw error;
 	}
 }
+
+export async function getAbilityDetailByUrl(url: string) {
+	try {
+		const response = await fetch(url);
+		const result = await response.json();
+		return result;
+	} catch (error) {
+		throw error;
+	}
+}

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { getPokemonInformationById } from '../api/pokemonApi';
+import FavoriteAdd from '../components/Pokemon/FavoriteAdd';
+import PokemonAbilities from '../components/Pokemon/PokemonAbilities';
 import PokemonHeader from '../components/Pokemon/PokemonHeader';
+import PokemonInfo from '../components/Pokemon/PokemonInfo';
 import PokemonType from '../components/Pokemon/PokemonType';
 import StatisticsPokemon from '../components/Pokemon/StatisticsPokemon';
+import ButtonComponent from '../components/common/ButtonComponent';
+import TitleComponent from '../components/common/TitleComponent';
 
 export default function PokemonScreen(props: any) {
 	const {
@@ -18,15 +22,7 @@ export default function PokemonScreen(props: any) {
 	useEffect(() => {
 		navigation.setOptions({
 			headerRight: () => null,
-			headerLeft: () => (
-				<Icon
-					name="arrow-left"
-					color="#fff"
-					size={20}
-					style={{ marginLeft: 20 }}
-					onPress={navigation.goBack}
-				/>
-			),
+			headerLeft: () => null,
 		});
 	}, [navigation, params]);
 
@@ -49,10 +45,36 @@ export default function PokemonScreen(props: any) {
 				name={pokemon.name}
 				order={pokemon.order}
 				type={pokemon.types[0].type.name}
+				abilities={pokemon.abilities}
 				image={pokemon.sprites.other.home.front_default}
 			/>
+			<FavoriteAdd id={pokemon.id} />
+			<PokemonInfo
+				weight={pokemon.weight}
+				height={pokemon.height}
+				type={pokemon.types[0].type.name}
+			/>
+			<TitleComponent title="Tipos" />
 			<PokemonType types={pokemon.types} />
-			<StatisticsPokemon statistcs={pokemon.stats} />
+			<TitleComponent title="Habilidades" />
+			<PokemonAbilities
+				abilities={pokemon.abilities}
+				type={pokemon.types[0].type.name}
+			/>
+			<TitleComponent title="Estadisticas Base" />
+			<StatisticsPokemon
+				statistcs={pokemon.stats}
+				type={pokemon.types[0].type.name}
+			/>
+
+			<ButtonComponent title="Evolución" type={pokemon.types[0].type.name} />
+			<View style={styles.viewSpacer} />
 		</ScrollView>
 	);
 }
+
+const styles = StyleSheet.create({
+	viewSpacer: {
+		paddingBottom: 80,
+	},
+});

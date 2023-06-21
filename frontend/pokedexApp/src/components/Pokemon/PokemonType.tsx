@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { capitalize, map } from 'lodash';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import getColorByPokemonType from '../../utils/getColorByPokemonType';
@@ -16,7 +16,7 @@ export default function PokemonType(props: any) {
 						backgroundColor: getColorByPokemonType(type.type.name),
 					}}
 				>
-					<Text>{type.type.name}</Text>
+					<Text>{capitalize(type.type.name)}</Text>
 				</View>
 			))}
 		</View>
@@ -25,10 +25,10 @@ export default function PokemonType(props: any) {
 
 const styles = StyleSheet.create({
 	content: {
-		marginTop: 50,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
+		paddingVertical: 10,
 	},
 	pill: {
 		paddingHorizontal: 30,

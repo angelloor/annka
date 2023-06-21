@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import AccountNavigation from './AccountNavigation';
 import FavoriteNavigation from './FavoriteNavigation';
 import PokedexNavigation from './PokedexNavigation';
@@ -12,15 +11,13 @@ export default function Navigation() {
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
-				name="TabFavorite"
-				component={FavoriteNavigation}
+				name="TabAccount"
+				component={AccountNavigation}
 				options={{
-					tabBarLabel: 'Favoritos',
+					tabBarLabel: '',
 					title: '',
 					headerTransparent: true,
-					tabBarIcon: ({ color, size }) => (
-						<Icon name="heart" color={color} size={size} />
-					),
+					tabBarIcon: () => renderAccount(),
 				}}
 			/>
 
@@ -34,17 +31,14 @@ export default function Navigation() {
 					tabBarIcon: () => renderPokeball(),
 				}}
 			/>
-
 			<Tab.Screen
-				name="TabAccount"
-				component={AccountNavigation}
+				name="TabFavorite"
+				component={FavoriteNavigation}
 				options={{
-					tabBarLabel: 'Mi cuenta',
+					tabBarLabel: '',
 					title: '',
 					headerTransparent: true,
-					tabBarIcon: ({ color, size }) => (
-						<Icon name="user" color={color} size={size} />
-					),
+					tabBarIcon: () => renderFavorite(),
 				}}
 			/>
 		</Tab.Navigator>
@@ -56,6 +50,24 @@ function renderPokeball() {
 		<Image
 			source={require('../assets/pokeball.png')}
 			style={{ width: 75, height: 75, top: -15 }}
+		/>
+	);
+}
+
+function renderAccount() {
+	return (
+		<Image
+			source={require('../assets/account.png')}
+			style={{ width: 50, height: 50, top: 0 }}
+		/>
+	);
+}
+
+function renderFavorite() {
+	return (
+		<Image
+			source={require('../assets/favorite.png')}
+			style={{ width: 50, height: 50, top: 0 }}
 		/>
 	);
 }

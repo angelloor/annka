@@ -31,7 +31,7 @@ export default function PokemonHeader(props: any) {
 const styles = StyleSheet.create({
 	bg: {
 		width: '100%',
-		height: 400,
+		height: 350,
 		position: 'absolute',
 		borderBottomEndRadius: 300,
 		borderBottomLeftRadius: 300,
@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
 	},
 	content: {
 		marginHorizontal: 20,
-		marginTop: 30,
+		marginTop: 0,
 	},
 	header: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: 40,
+		paddingTop: 20,
 	},
 	name: {
 		color: '#fff',
@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		top: 30,
+		top: 0,
 	},
 	image: {
-		width: 250,
-		height: 300,
+		width: 400,
+		height: 350,
 		resizeMode: 'contain',
 	},
 });

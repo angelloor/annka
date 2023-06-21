@@ -1,6 +1,7 @@
 export const API_HOST: string = 'https://pokeapi.co/api/v2/';
 export const AMOUNT_POKEMONS_BY_PAGE: number = 20;
 export const OFFSET_POKEMON_INITIAL: number = 0;
+export const FAVORITE_STORAGE = 'favorites';
 
 export const POKEMON_TYPE_COLORS: any = {
 	normal: '#A8A878',
