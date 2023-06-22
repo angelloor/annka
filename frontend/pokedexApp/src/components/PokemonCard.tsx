@@ -2,13 +2,18 @@ import { useNavigation } from '@react-navigation/native';
 import { capitalize } from 'lodash';
 import React from 'react';
 import {
+	Dimensions,
 	Image,
 	StyleSheet,
 	Text,
 	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-import getColorByPokemonType from '../utils/getColorByPokemonType';
+
+const maxWidth = Dimensions.get('window').width;
+
+import { appConfig } from '../app.config';
+import { getColorByPokemonType, returnFormatedOrder } from '../utils/others';
 
 export default function PokemonCard(props: any) {
 	const navigation: any = useNavigation();
@@ -31,7 +36,7 @@ export default function PokemonCard(props: any) {
 							{returnFormatedOrder(pokemon.order)}
 						</Text>
 						<Text style={styles.name}>{capitalize(pokemon.name)}</Text>
-						<Image source={{ uri: pokemon.image }} style={styles.image} />
+						<Image source={{ uri: pokemon.image }} style={styles.img} />
 					</View>
 				</View>
 			</View>
@@ -52,22 +57,23 @@ const styles = StyleSheet.create({
 		flex: 1,
 		borderRadius: 15,
 		padding: 10,
+		maxWidth: maxWidth / 2 - 15,
 	},
 	order: {
 		position: 'absolute',
 		right: 10,
 		top: 10,
-		color: 'white',
+		color: appConfig.appColors.color,
 		fontSize: 11,
 	},
 	name: {
-		color: 'white',
+		color: appConfig.appColors.color,
 		fontWeight: 'bold',
 		fontSize: 15,
 		paddingTop: 10,
 		textTransform: 'capitalize',
 	},
-	image: {
+	img: {
 		position: 'absolute',
 		bottom: 2,
 		right: 2,
@@ -75,6 +81,3 @@ const styles = StyleSheet.create({
 		height: 90,
 	},
 });
-
-export const returnFormatedOrder = (order: string) =>
-	'#' + `${order}`.padStart(3, '0');

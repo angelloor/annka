@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { renderClosePokeball, renderOpenPokeball } from '../../Icons/Pokedex';
 import {
-	addPokemonFavoriteApi,
-	isPokemonFavoriteApi,
-	removePokemonFavoriteApi,
-} from '../../api/favoriteStorage';
+	addPokemonFavoriteStorage,
+	isPokemonFavoriteStorage,
+	removePokemonFavoriteStorage,
+} from '../../storage/favoriteStorage';
 
 export default function FavoriteAdd(props: any) {
 	const { id } = props;
-	const [isFavorite, setIsFavorite] = useState<any>(undefined);
+	const [isFavorite, setIsFavorite] = useState<any>(null);
 	const [reloadCheck, setReloadCheck] = useState(false);
-	const Icon = isFavorite ? FontAwesome : FontAwesome5;
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const response: any = await isPokemonFavoriteApi(id);
-				setIsFavorite(response);
+				const isPokemonFavorite: any = await isPokemonFavoriteStorage(id);
+				setIsFavorite(isPokemonFavorite);
 			} catch (error) {
 				setIsFavorite(false);
 			}
@@ -31,7 +29,7 @@ export default function FavoriteAdd(props: any) {
 
 	const addFavorite = async () => {
 		try {
-			await addPokemonFavoriteApi(id);
+			await addPokemonFavoriteStorage(id);
 			onReloadCheckFavorite();
 		} catch (error) {
 			console.log(error);
@@ -40,7 +38,7 @@ export default function FavoriteAdd(props: any) {
 
 	const removeFavorite = async () => {
 		try {
-			await removePokemonFavoriteApi(id);
+			await removePokemonFavoriteStorage(id);
 			onReloadCheckFavorite();
 		} catch (error) {
 			console.log(error);
@@ -48,23 +46,19 @@ export default function FavoriteAdd(props: any) {
 	};
 
 	return (
-		<View style={styles.contentIcon}>
-			<Icon
-				name="heart"
-				color="#f8312f"
-				size={30}
-				onPress={isFavorite ? removeFavorite : addFavorite}
-			/>
+		<View style={styles.container}>
+			<TouchableOpacity onPress={isFavorite ? removeFavorite : addFavorite}>
+				{isFavorite ? renderOpenPokeball() : renderClosePokeball()}
+			</TouchableOpacity>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	contentIcon: {
+	container: {
 		flex: 1,
 		alignItems: 'center',
 		marginTop: 20,
 		paddingVertical: 10,
 	},
-	icon: {},
 });

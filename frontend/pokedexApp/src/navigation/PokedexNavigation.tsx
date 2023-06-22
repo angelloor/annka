@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import PokemonListType from '../components/Pokemon/PokemonListType';
+import PokemonListType from '../components/PokemonTypeList';
 import PokedexScreen from '../screens/PokedexScreen';
 import PokemonScreen from '../screens/PokemonScreen';
 
 const Stack = createStackNavigator();
 
-export default function PokedexNavigation() {
+export default function PokedexNavigation(props: any) {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
@@ -29,7 +29,7 @@ export default function PokedexNavigation() {
 				name="StackPokemonList"
 				component={PokemonListType}
 				options={{
-					title: 'Lista de Pokemons',
+					title: '',
 					headerTransparent: true,
 				}}
 			/>

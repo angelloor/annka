@@ -2,26 +2,26 @@ import { capitalize } from 'lodash';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
-import { returnFormatedOrder } from '../PokemonCard';
+import { appConfig } from '../../app.config';
+import { getColorByPokemonType, returnFormatedOrder } from '../../utils/others';
 
 export default function PokemonHeader(props: any) {
 	const { name, order, type, image } = props;
 
 	const pokemonColor = getColorByPokemonType(type);
 
-	const bgStyles = { backgroundColor: pokemonColor, ...styles.bg };
+	const bgStyles = { backgroundColor: pokemonColor, ...styles.background };
 
 	return (
 		<>
 			<View style={bgStyles} />
-			<SafeAreaView style={styles.content}>
+			<SafeAreaView style={styles.container}>
 				<View style={styles.header}>
 					<Text style={styles.name}>{capitalize(name)}</Text>
 					<Text style={styles.order}>{returnFormatedOrder(order)}</Text>
 				</View>
-				<View style={styles.contentImg}>
-					<Image source={{ uri: image }} style={styles.image} />
+				<View style={styles.containerImg}>
+					<Image source={{ uri: image }} style={styles.img} />
 				</View>
 			</SafeAreaView>
 		</>
@@ -29,7 +29,7 @@ export default function PokemonHeader(props: any) {
 }
 
 const styles = StyleSheet.create({
-	bg: {
+	background: {
 		width: '100%',
 		height: 350,
 		position: 'absolute',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 		borderBottomLeftRadius: 300,
 		transform: [{ scaleX: 2 }],
 	},
-	content: {
+	container: {
 		marginHorizontal: 20,
 		marginTop: 0,
 	},
@@ -48,21 +48,21 @@ const styles = StyleSheet.create({
 		paddingTop: 20,
 	},
 	name: {
-		color: '#fff',
+		color: appConfig.appColors.color,
 		fontWeight: 'bold',
 		fontSize: 27,
 	},
 	order: {
-		color: '#fff',
+		color: appConfig.appColors.color,
 		fontWeight: 'bold',
 	},
-	contentImg: {
+	containerImg: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		top: 0,
 	},
-	image: {
+	img: {
 		width: 400,
 		height: 350,
 		resizeMode: 'contain',

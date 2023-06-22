@@ -1,10 +1,11 @@
 import { capitalize, map } from 'lodash';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import { appConfig } from '../../app.config';
+import { getColorByPokemonType } from '../../utils/others';
 
-export default function StatisticsPokemon(props: any) {
-	const { statistcs, type } = props;
+export default function PokemonStat(props: any) {
+	const { stats, type } = props;
 
 	const pokemonColor = getColorByPokemonType(type);
 
@@ -15,7 +16,7 @@ export default function StatisticsPokemon(props: any) {
 		base: pokemonColor,
 	};
 
-	const barStyles = (num: any) => {
+	const barStyles = (num: number) => {
 		const color =
 			num <= 30
 				? colors.red
@@ -31,16 +32,16 @@ export default function StatisticsPokemon(props: any) {
 	};
 
 	return (
-		<View style={styles.content}>
-			{map(statistcs, (item, index) => (
+		<View style={styles.container}>
+			{map(stats, (stat, index) => (
 				<View key={index} style={styles.block}>
-					<View style={styles.blockTitle}>
-						<Text style={styles.statName}>{capitalize(item.stat.name)}</Text>
+					<View style={styles.title}>
+						<Text style={styles.name}>{capitalize(stat.stat.name)}</Text>
 					</View>
-					<View style={styles.blockInfo}>
-						<Text style={styles.number}>{item.base_stat}</Text>
-						<View style={styles.bgBar}>
-							<View style={[styles.bar, barStyles(item.base_stat)]} />
+					<View style={styles.info}>
+						<Text style={styles.number}>{stat.base_stat}</Text>
+						<View style={styles.backgroundBar}>
+							<View style={[styles.bar, barStyles(stat.base_stat)]} />
 						</View>
 					</View>
 				</View>
@@ -50,37 +51,33 @@ export default function StatisticsPokemon(props: any) {
 }
 
 const styles = StyleSheet.create({
-	content: {
+	container: {
 		paddingHorizontal: 20,
 		marginBottom: 0,
 		paddingVertical: 10,
-	},
-	title: {
-		fontWeight: 'bold',
-		fontSize: 20,
-		paddingBottom: 5,
 	},
 	block: {
 		flexDirection: 'row',
 		paddingVertical: 5,
 	},
-	blockTitle: {
+	title: {
 		width: '30%',
 	},
-	statName: {
+	name: {
 		fontSize: 12,
-		color: '#6b6b6b',
+		color: appConfig.appColors.color,
 	},
-	blockInfo: {
+	info: {
 		width: '70%',
 		flexDirection: 'row',
-		alignItems: 'center',
+		alignstats: 'center',
 	},
 	number: {
 		width: '12%',
 		fontSize: 12,
+		color: appConfig.appColors.color,
 	},
-	bgBar: {
+	backgroundBar: {
 		backgroundColor: '#dedede',
 		width: '88%',
 		height: 5,
@@ -88,8 +85,6 @@ const styles = StyleSheet.create({
 		overflow: 'hidden',
 	},
 	bar: {
-		// backgroundColor: "red",
-		// width: "40%",
 		height: 5,
 		borderRadius: 20,
 	},

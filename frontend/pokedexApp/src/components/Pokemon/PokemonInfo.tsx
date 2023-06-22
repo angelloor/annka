@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import { appConfig } from '../../app.config';
+import { addCeros, getColorByPokemonType } from '../../utils/others';
 
 export default function PokemonInfo(props: any) {
 	let { weight, height, type } = props;
@@ -11,7 +12,7 @@ export default function PokemonInfo(props: any) {
 	const pokemonColor = getColorByPokemonType(type);
 
 	return (
-		<View style={styles.contentInfo}>
+		<View style={styles.container}>
 			<View style={styles.containerWeight}>
 				<Icon name="weight" color={pokemonColor} size={30} />
 				<Text style={styles.text}>{weightFormated}</Text>
@@ -25,7 +26,7 @@ export default function PokemonInfo(props: any) {
 }
 
 const styles = StyleSheet.create({
-	contentInfo: {
+	container: {
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -44,27 +45,9 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 	},
 	text: {
-		color: 'black',
+		color: appConfig.appColors.color,
 		fontSize: 16,
 		fontWeight: '500',
 		marginTop: 5,
 	},
 });
-
-function addCeros(weight: number, height: number): any {
-	if (weight >= height) {
-		var amountCharactersWeight = weight.toString().length;
-
-		return {
-			weightFormated: weight,
-			heightFormated: height.toString().padStart(amountCharactersWeight, '0'),
-		};
-	} else {
-		var amountCharactersHeight = height.toString().length;
-
-		return {
-			weightFormated: weight.toString().padStart(amountCharactersHeight, '0'),
-			heightFormated: height,
-		};
-	}
-}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import { appConfig } from '../../app.config';
+import { getColorByPokemonType } from '../../utils/others';
 
-const ButtonComponent = ({ event, title, type }: any) => {
+export const ButtonComponent = ({ event, title, type }: any) => {
 	const pokemonColor = getColorByPokemonType(type);
 
 	const btnStyles = { backgroundColor: pokemonColor, ...styles.btn };
@@ -24,11 +25,9 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	btnText: {
-		color: 'white',
+		color: appConfig.appColors.color,
 		fontSize: 16,
 		fontWeight: 'bold',
 		textAlign: 'center',
 	},
 });
-
-export default ButtonComponent;

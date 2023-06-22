@@ -41,12 +41,12 @@ export default function PokedexScreen() {
 
 	const loadPokemons = async () => {
 		try {
-			const pokemonsAPI = await getPokemons(nextUrl);
-			setNextUrl(pokemonsAPI.next);
+			const pokemons = await getPokemons(nextUrl);
+			setNextUrl(pokemons.next);
 
 			const pokemonsList: any = [];
 
-			for await (const pokemon of pokemonsAPI.results) {
+			for await (const pokemon of pokemons.results) {
 				const pokemonDetail = await getPokemonDetailByUrl(pokemon.url);
 
 				pokemonsList.push({

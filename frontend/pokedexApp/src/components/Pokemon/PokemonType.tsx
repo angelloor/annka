@@ -1,39 +1,50 @@
+import { useNavigation } from '@react-navigation/native';
 import { capitalize, map } from 'lodash';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { appConfig } from '../../app.config';
+import { getColorByPokemonType } from '../../utils/others';
 
 export default function PokemonType(props: any) {
+	const navigation: any = useNavigation();
 	const { types } = props;
 
+	const navigateTypePokemon: any = (nameType: string) => {
+		navigation.navigate('StackPokemonList', { name: nameType });
+	};
+
 	return (
-		<View style={styles.content}>
+		<View style={styles.container}>
 			{map(types, (type, index) => (
-				<View
+				<TouchableOpacity
 					key={index}
 					style={{
-						...styles.pill,
+						...styles.type,
 						backgroundColor: getColorByPokemonType(type.type.name),
 					}}
+					onPress={() => navigateTypePokemon(type.type.name)}
 				>
-					<Text>{capitalize(type.type.name)}</Text>
-				</View>
+					<Text style={styles.text}>{capitalize(type.type.name)}</Text>
+				</TouchableOpacity>
 			))}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	content: {
+	container: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
 		paddingVertical: 10,
 	},
-	pill: {
+	type: {
 		paddingHorizontal: 30,
 		paddingVertical: 5,
 		borderRadius: 20,
 		marginHorizontal: 10,
+	},
+	text: {
+		color: appConfig.appColors.color,
 	},
 });

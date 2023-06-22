@@ -1,54 +1,70 @@
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import {
+	Image,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from 'react-native';
 import * as Yup from 'yup';
-import useAuth from '../../hooks/useAuth';
-import { user, userDetails } from '../../utils/userDB';
+import { appConfig } from '../../app.config';
+import { commonStyles } from '../../styles/common';
+import TitleComponent from '../Common/TitleComponent';
 
 export default function LoginForm() {
-	const [error, setError] = useState('');
-	const { login }: any = useAuth();
-
+	/**
+	 * Armamos el formulario con formik, para validar los campos y enviar los datos
+	 */
 	const formik: any = useFormik({
 		initialValues: initialValues(),
 		validationSchema: Yup.object(validationSchema()),
 		validateOnChange: false,
 		onSubmit: (formValue) => {
-			setError('');
 			const { username, password } = formValue;
-
-			if (username !== user.username || password !== user.password) {
-				setError('El usuario o la contraseña no son correcto');
-			} else {
-				login(userDetails);
-			}
 		},
 	});
 
 	return (
-		<View>
-			<Text style={styles.title}>Iniciar sesión</Text>
+		<View style={styles.container}>
+			<Image source={require('../../assets/img/logo.png')} style={styles.img} />
+			<TitleComponent title="Iniciar sesión" />
 			<TextInput
 				placeholder="Nombre de usuario"
-				style={styles.input}
+				placeholderTextColor={appConfig.appColors.color}
+				style={commonStyles.input}
 				autoCapitalize="none"
 				value={formik.values.username}
 				onChangeText={(text) => formik.setFieldValue('username', text)}
 			/>
 			<TextInput
 				placeholder="Contraseña"
-				style={styles.input}
+				placeholderTextColor={appConfig.appColors.color}
+				style={commonStyles.input}
 				autoCapitalize="none"
 				secureTextEntry={true}
 				value={formik.values.password}
 				onChangeText={(text) => formik.setFieldValue('password', text)}
 			/>
-			<Button title="Entrar" onPress={formik.handleSubmit} />
+			<TouchableOpacity
+				activeOpacity={0.6}
+				style={styles.btn}
+				onPress={formik.handleSubmit}
+			>
+				<Text style={styles.btnText}>Ingresar</Text>
+			</TouchableOpacity>
 
-			<Text style={styles.error}>{formik.errors.username}</Text>
-			<Text style={styles.error}>{formik.errors.password}</Text>
-
-			<Text style={styles.error}>{error}</Text>
+			{!formik.isValid ? (
+				<View style={styles.containerError}>
+					{formik.errors.username ? (
+						<Text style={styles.error}>{formik.errors.username}</Text>
+					) : null}
+					{formik.errors.password ? (
+						<Text style={styles.error}>{formik.errors.password}</Text>
+					) : null}
+				</View>
+			) : null}
 		</View>
 	);
 }
@@ -62,29 +78,44 @@ function initialValues() {
 
 function validationSchema() {
 	return {
-		username: Yup.string().required('El usuario es obligatorio'),
-		password: Yup.string().required('La contraseña es obligatoria'),
+		username: Yup.string().required('Usuario requerido'),
+		password: Yup.string().required('Contraseña requerida'),
 	};
 }
 
 const styles = StyleSheet.create({
-	title: {
-		textAlign: 'center',
-		fontSize: 28,
-		fontWeight: 'bold',
-		marginTop: 50,
-		marginBottom: 15,
+	container: {
+		display: 'flex',
+		width: '100%',
 	},
-	input: {
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
+	img: { width: 288, height: 53, alignSelf: 'center', marginVertical: 10 },
+	btn: {
+		width: '30%',
+		backgroundColor: appConfig.appColors.backgroundHeader,
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+		borderRadius: 10,
+		marginVertical: 10,
+		alignSelf: 'center',
+	},
+	btnText: {
+		color: appConfig.appColors.color,
+		fontSize: 16,
+		fontWeight: 'bold',
+		textAlign: 'center',
+	},
+	containerError: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#dc2626',
+		borderColor: 'white',
+		borderWidth: 0.5,
 		borderRadius: 10,
 	},
 	error: {
 		textAlign: 'center',
-		color: '#f00',
-		marginTop: 20,
+		color: '#ffe9d0',
+		paddingHorizontal: 20,
+		paddingVertical: 10,
 	},
 });

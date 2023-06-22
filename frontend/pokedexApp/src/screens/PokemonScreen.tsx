@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { getPokemonInformationById } from '../api/pokemonApi';
+import { getPokemonDetailById } from '../APIs/pokemonAPI';
+import { appConfig } from '../app.config';
+import { ButtonComponent } from '../components/Common/ButtonComponent';
+import TitleComponent from '../components/Common/TitleComponent';
 import FavoriteAdd from '../components/Pokemon/FavoriteAdd';
 import PokemonAbilities from '../components/Pokemon/PokemonAbilities';
 import PokemonHeader from '../components/Pokemon/PokemonHeader';
 import PokemonInfo from '../components/Pokemon/PokemonInfo';
+import StatisticsPokemon from '../components/Pokemon/PokemonStat';
 import PokemonType from '../components/Pokemon/PokemonType';
-import StatisticsPokemon from '../components/Pokemon/StatisticsPokemon';
-import ButtonComponent from '../components/common/ButtonComponent';
-import TitleComponent from '../components/common/TitleComponent';
 
 export default function PokemonScreen(props: any) {
 	const {
@@ -29,8 +30,8 @@ export default function PokemonScreen(props: any) {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await getPokemonInformationById(id);
-				setPokemon(response);
+				const pokemonDetail = await getPokemonDetailById(id);
+				setPokemon(pokemonDetail);
 			} catch (error) {
 				navigation.goBack();
 			}
@@ -40,15 +41,17 @@ export default function PokemonScreen(props: any) {
 	if (!pokemon) return null;
 
 	return (
-		<ScrollView>
+		<ScrollView style={styles.container}>
 			<PokemonHeader
+				style={{ zIndex: 3 }}
 				name={pokemon.name}
 				order={pokemon.order}
 				type={pokemon.types[0].type.name}
-				abilities={pokemon.abilities}
+				stats={pokemon.stats}
 				image={pokemon.sprites.other.home.front_default}
 			/>
 			<FavoriteAdd id={pokemon.id} />
+
 			<PokemonInfo
 				weight={pokemon.weight}
 				height={pokemon.height}
@@ -63,7 +66,7 @@ export default function PokemonScreen(props: any) {
 			/>
 			<TitleComponent title="Estadisticas Base" />
 			<StatisticsPokemon
-				statistcs={pokemon.stats}
+				stats={pokemon.stats}
 				type={pokemon.types[0].type.name}
 			/>
 
@@ -74,6 +77,9 @@ export default function PokemonScreen(props: any) {
 }
 
 const styles = StyleSheet.create({
+	container: {
+		backgroundColor: appConfig.appColors.background,
+	},
 	viewSpacer: {
 		paddingBottom: 80,
 	},

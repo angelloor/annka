@@ -6,11 +6,11 @@ const Stack = createStackNavigator();
 
 export default function AccountNavigation() {
 	return (
-		<Stack.Navigator>
+		<Stack.Navigator screenOptions={{}}>
 			<Stack.Screen
 				name="StackAccount"
 				component={AccountScreen}
-				options={{ title: 'Mi cuenta' }}
+				options={{ title: '', headerTransparent: true }}
 			/>
 		</Stack.Navigator>
 	);

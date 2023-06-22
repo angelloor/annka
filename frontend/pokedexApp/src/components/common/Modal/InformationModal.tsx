@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { appConfig } from '../../../app.config';
 
 export interface InformationModalProps {
 	title?: string;
@@ -26,14 +27,17 @@ export default function InformationModal(props: InformationModalProps) {
 		colorTextBtn,
 	}: InformationModalProps | any = props;
 
-	const modalViewStyle: any = { backgroundColor: bgModal, ...styles.modalView };
+	const modalViewStyle: any = {
+		backgroundColor: bgModal ? bgModal : appConfig.appColors.background,
+		...styles.modalView,
+	};
 	const textStyle: any = { color: colorText, ...styles.text };
 	const buttonStyle: any = { backgroundColor: bgBtn, ...styles.btn };
-	const textBtnStyle: any = { color: colorTextBtn, ...styles.textBtn };
+	const textBtnStyle: any = { color: colorTextBtn, ...styles.btnText };
 
 	return (
 		<Modal animationType="fade" transparent={true} visible={modalVisible}>
-			<View style={styles.centeredView}>
+			<View style={styles.container}>
 				<View style={modalViewStyle}>
 					<Text style={{ ...textStyle, fontWeight: 'bold' }}>{title}</Text>
 					<Text style={textStyle}>{text}</Text>
@@ -53,7 +57,7 @@ export default function InformationModal(props: InformationModalProps) {
 }
 
 const styles = StyleSheet.create({
-	centeredView: {
+	container: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
 		elevation: 2,
 		marginTop: 7,
 	},
-	textBtn: {
+	btnText: {
 		fontSize: 14,
 		textAlign: 'center',
 	},
