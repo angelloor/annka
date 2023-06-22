@@ -19,7 +19,9 @@ export default function PokemonScreen(props: any) {
 	const { id } = params;
 
 	const [pokemon, setPokemon] = useState<any>(null);
-
+	/**
+	 * Reset header
+	 */
 	useEffect(() => {
 		navigation.setOptions({
 			headerRight: () => null,
@@ -27,6 +29,9 @@ export default function PokemonScreen(props: any) {
 		});
 	}, [navigation, params]);
 
+	/**
+	 * Si params cambia, se vuelve a llamar a la API, trayendo la informacion del nuevo pokemon
+	 */
 	useEffect(() => {
 		(async () => {
 			try {

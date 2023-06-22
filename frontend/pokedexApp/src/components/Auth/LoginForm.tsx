@@ -33,7 +33,7 @@ export default function LoginForm() {
 			<TextInput
 				placeholder="Nombre de usuario"
 				placeholderTextColor={appConfig.appColors.color}
-				style={commonStyles.input}
+				style={{ ...commonStyles.input, marginTop: 20 }}
 				autoCapitalize="none"
 				value={formik.values.username}
 				onChangeText={(text) => formik.setFieldValue('username', text)}
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		marginVertical: 10,
 		alignSelf: 'center',
+		marginTop: 20,
 	},
 	btnText: {
 		color: appConfig.appColors.color,

@@ -9,6 +9,7 @@ export default function PokemonType(props: any) {
 	const navigation: any = useNavigation();
 	const { types } = props;
 
+	// Navegar a la pantalla de lista de pokemon por tipo de acuerdo al tipo seleccionado
 	const navigateTypePokemon: any = (nameType: string) => {
 		navigation.navigate('StackPokemonList', { name: nameType });
 	};

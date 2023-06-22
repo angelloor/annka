@@ -9,6 +9,7 @@ export default function PokemonInfo(props: any) {
 
 	const { weightFormated, heightFormated } = addCeros(weight, height);
 
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(type);
 
 	return (

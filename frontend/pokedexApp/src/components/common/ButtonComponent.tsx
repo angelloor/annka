@@ -4,6 +4,7 @@ import { appConfig } from '../../app.config';
 import { getColorByPokemonType } from '../../utils/others';
 
 export const ButtonComponent = ({ event, title, type }: any) => {
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(type);
 
 	const btnStyles = { backgroundColor: pokemonColor, ...styles.btn };

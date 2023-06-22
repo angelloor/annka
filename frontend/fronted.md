@@ -1,73 +1,55 @@
-# Desafio programación - para vacante Front-end
+# PokeDex
 
-El propósito de este desafio es evaluar tu conocimiento técnico en React/React Native.
+## Preparando Ambiente
 
-El desafio consiste en utilizar la API([pokeapi v2](https://pokeapi.co/docsv2/#)) para construir una Pokédex.
+A continuación, listare las herramientas utilizadas para resolver estos desafíos con sus respectivas versiones y una reproducción para instalarlas.
 
-Este desafio lo puedes hacer desde la comodidad de tu casa. Dedique todo el tiempo que desee, nosotros esperamos que nos entregues hasta en 3 dias.
+## NVM
 
-# Instrucciones de entrega del desafío
+Para no alterar las versiones de NodeJS que pudieran estas utilizando es recomendable instalar NVM para manejar las versiones:
 
-1. Primero, haga un fork de este proyecto a su cuenta de Github (cree uno si no tiene) o crea un repossitorio nuevo.
-2. Luego implemente el proyecto como se describe a continuación en su clone local.
-3. Finalmente, envíe por correo electrónico el link para el repositorio que creaste ou clonaste.
+Para windows la puedes instalar siguiendo esta guía:
+https://4geeks.com/how-to/nvm-install-windows
 
-# Descripción del Proyecto
+Para mac:
+https://noviello.it/es/como-instalar-nvm-en-macos-con-homebrew/
 
-Con esta API ([pokeapi v2](https://pokeapi.co/docsv2/#)) en la mano, necesitamos que crees una interfaz WEB o un app móvil, para mostrar la información de los pokemons capturados.
+Una vez instalado,
 
-**Su APLICACIÓN DEBE:**
+1. Arrancar un terminal en modo administrador
+2. Instalar NodeJS v18.16.0: nvm install 18.16.0 && nvm use 18.16.0
+3. Y listo, ya tienes la version de NodeJS
 
-1. Tener un filtro para buscar pokemons por nombre o número
-2. Añade o captura, como prefieras, nuevos pokémons a la Pokédex, que al principio estará vacía
-3. Haz una lista de los Pokémon que se agregaron a la Pokédex
-4. Mostrar detalles de personajes agregados a Pokédex como:
-   - Nombre
-   - Imagen que da la opción de que el usuario cargue su propia imagen, reemplazando la entregada a través de la API
-   - Peso
-   - Tamaño
-   - Lista de tipos
-   - Lista de habilidades
-   - Estadísticas de velocidad
-   - Defensa
-   - ataque
-   - caballos de fuerza HP
-   - Cada paso de su evolución.
-   - Al hacer clic en un elemento de la lista de tipos, se muestran todos los pokémon del mismo tipo, incluidos los que aún no se agregaron a la Pokédex
-   - Al hacer clic en un elemento de la lista de habilidades, muestra el "short_effect" del mismo.
-5. Eliminar pokémons que se agregaron a Pokédex
+## ANDROID STUDIO
 
-**Su aplicación web/app NO NECESITA:**
+Es necesario instalar Android Studio o XCODE, la aplicación este desarrollada en React Native en un entorno de windows, por lo cual te recomiendo que la corras en windows para que puedas ver bien los estilos, (No esta optimizada para IOs)
 
-1. Manejar la autenticación o autorización (puntos extra si lo hace)
-2. No necesita estar hospedado en ningún servidor
-3. Tratar con API diferentes a las que recomienda el desafio
-4. Estar escrito usando algún framework específico (pero no hay nada de malo en usarlos también, usa el que creas que es mejor).
+Dejo aquí la guía oficial para configurar el ambiente de desarrollo de React Native:
 
-# Tecnologías que deben estar presentes en el desafio
+https://reactnative.dev/docs/environment-setup?os=windows
 
-- React/React Native
-- Node.js
-- React Testing Library
+Si tienes alguna duda o trabajas en Mac, por favor házmelo.
 
-** No es necessário pero, si lo presentas seria un credito a tu favor.**
+después de instalar Android Studio hay que crear un Virtual Device, con el API 33 (Tiramisu), así como menciona la guía oficial: https://reactnative.dev/docs/environment-setup?os=windows#android-sdk
 
-- Protocolos gRPC
-- Rest API
-- Docker, sería bueno cargar su sistema con solo una línea de comando.
+## Instrucciones de Ejecución
 
-# Evaluación
+Una vez hecho todo esto, lo siguiente a realizar es:
 
-Su proyecto será evaluado de acuerdo con los siguientes criterios:
+1. Descargar el proyecto del repositorio.
+2. Accedemos a él.
+3. Instalamos las dependencias: **npm i**
+4. Ejecutamos: **npm run start**
+5. Una vez que metro este corriendo y virtual device este encendido, presionamos la letra **"a"**, dentro de la consola.
 
-1. ¿Su aplicación cumple con los requisitos básicos?
-2. ¿Ha documentado cómo configurar el entorno y ejecutar su aplicación?
-3. ¿Seguiste las instrucciones para enviar el desafío?
-4. Calidad y cobertura de las pruebas unitarias/funcionales.
-5. Tener una apariencia amigable
+Eso debería ser todo para que puedas ver funcionando la aplicación
 
-Además, intentaremos verificar su familiaridad con las bibliotecas estándar, así como su experiencia con la programación funcional dentro de la estructura de su proyecto. El objetivo es evaluar tu experiencia en la escritura de código de fácil mantenimiento y alta cohesión.
+## ¡Gracias por su tiempo!
 
----
+Si tienes alguna pregunta o necesitas más información, no dudes en contactarme.
 
-## ¡Buena suerte!
+¡Saludos cordiales!
+
+Angel Loor
+angelloor.dev@gmail.com
++593 99 867 9628

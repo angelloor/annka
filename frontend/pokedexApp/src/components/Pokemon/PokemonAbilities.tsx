@@ -10,6 +10,7 @@ import InformationModal from '../Common/Modal/InformationModal';
 export default function PokemonAbilities(props: any) {
 	const { abilities, type } = props;
 
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(type);
 	/**
 	 * Modal
@@ -18,6 +19,10 @@ export default function PokemonAbilities(props: any) {
 	const [textModal, setTextModal] = useState('');
 	const [statusModal, setStatusModal] = useState(false);
 
+	/**
+	 * Abrir modal para mostrar el short_effect de la habilidad
+	 * @param ability abilidad
+	 */
 	const openModal = async (ability: any) => {
 		setTitleModal(capitalize(ability.ability.name));
 
@@ -25,7 +30,7 @@ export default function PokemonAbilities(props: any) {
 			const abilityDetail = await getAbilityDetailByUrl(ability.ability.url);
 
 			const { effect_entries } = abilityDetail;
-
+			// obtener el short_effect en ingles (otra opcion 'de')
 			const short_effect = effect_entries.find(
 				(item: any) => item.language.name === 'en'
 			).short_effect;

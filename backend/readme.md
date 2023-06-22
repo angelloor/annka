@@ -1,53 +1,69 @@
-# Desafio programación - para vacante Back-end
+# Backend
 
-Este desafio lo puedes hacer desde la comodidad de tu casa. Dedique todo el tiempo que desee, nosotros esperamos que nos entregues en máximo 3 dias.
+## Preparando Ambiente
 
-## Presentación del problema
+A continuación, listare las herramientas utilizadas para resolver el desafío con sus respectivas versiones y una reproducción para instalarlas.
 
-Nuestro cliente interno necesita actualizar periódicamente los datos de nuestros socios. El problema pasa que para actualizar, necesita entrar a la página de edición de cada uno de los socios. Este es un trabajo muy tedioso y que requiere mucho tiempo.
+## NVM
 
-¡Tenemos que dar una solución a este problema!
+Para no alterar las versiones de NodeJS que pudieran estas utilizando es recomendable instalar NVM para manejar las versiones:
 
-Nuestro equipo de productos pensó que podíamos hacer una actualización por lotes a través de un CSV.
+Para windows la puedes instalar siguiendo esta guía:
 
-[Descargue un CSV de ejemplo aquí](example.csv)
+https://4geeks.com/how-to/nvm-install-windows
 
-## Requisitos
+Para mac:
+https://noviello.it/es/como-instalar-nvm-en-macos-con-homebrew/
 
-- Cree un endpoint que recibirá un CSV por upload y, al procesar este CSV, actualizaremos un socio existente o crearemos un nuevo socio;
-- Crear un endpoint de lista de socios;
-- Documentación sobre cómo ejecutar la aplicación.
+Una vez instalado,
 
-## Bono
+1. Arrancar un terminal en modo administrador
 
-- Validaciones de los campos, no queremos que una cédula reemplace a un RUC;
-- Sería interesante si tuviéramos la información de la Ciudad y Provincia de nuestros socios en nuestra base de datos;
-- Enviar un mensaje de bienvenida a los nuevos socios (el envío de un correo electrónico en realidad no tiene que ocurrir, solo puede iniciar sesión);
-- Las pruebas unitarias y de integración serán diferenciales;
-- Usando docker, sería bueno cargar su sistema con solo una línea de comando.
-- Interfaz en HTML
+2. Instalar NodeJS v18.16.0: nvm install 18.16.0 && nvm use 18.16.0
 
-## Tecnologías utilizadas
+3. Y listo, ya tienes la versión de NodeJS
 
-- Preferencialmente usar Python como lenguaje;
+## PostgreSQL v13.8
 
-## Consejos
+Es necesario instalar PostgreSQL en su versión 13, para lo cual dejo el enlace de descarga: https://www.postgresql.org/download/
 
-- Aproveche los recursos de las herramientas que está utilizando. Diversifique y demuestre que dominas cada uno de ellos;
-- Trate de escribir su código lo más claro y limpio posible. El código debe ser legible como cualquier texto de tesis;
-- Documentación breve y explicativa sobre cómo ejecutar su código y crear el ambiente/entorno;
-- NOTA: No necesita crear un front-end para la aplicación.
+una vez instalado, se tiene que crear la base de datos con el script que está en la siguiente ruta: **./db/create.sql**
 
-## Meta
+una vez creada la base de datos, hay que confirmar las variables de entorno, en la siguiente ruta: **./env/development.env**
 
-- El objetivo es evaluar tu experiencia en la escritura de código de fácil mantenimiento y alta cohesión.
+Digo confirmar por si establecen otra contraseña para el servidor de PG, las variables de entorno de MAILER\_\*, no es necesario tocarlas ya que son las correctas para realizar él envió de correos.
 
-## Envío
+**Nota:** la carpeta de ./env no se subirá a GitHub por motivos de seguridad, así que la enviare por correo electrónico, por favor, colocarla en la raíz del proyecto.
 
-Para enviarnos su código, haga un fork de este repositorio y envíenos un pull request o cree su repositorio y comparta con nosotros.
+## Postman
 
-Cualquier duda técnica, envía un mensaje a amka.contato@gmail.com.
+También es necesario instalar Postman o Insomnia (De preferencia Postman), una vez instalado, se tiene que importar la colección que está ubicada en **./postman/ANNKA Backend.postman_collection**
 
-Tendrás 3 días para completar este desafio después de recibirlo.
+## Instrucciones de Ejecución
 
-¡Éxitos!
+Una vez hecho todo esto, lo siguiente a realizar es:
+
+1. Descargar el proyecto del repositorio.
+2. Accedemos a él.
+3. Instalamos las dependencias: **npm i**
+4. Ejecutamos el servidor en desarrollo y en ts: **npm run server-dev-ts**
+5. Una vez que el servidor ya este levantado, podemos hacer uso de los EndPoints.
+
+La documentación de los EndPoints te la dejare en otro archivo con el nombre: **EndPoints.md**
+
+Eso debería ser todo para que puedas ver funcionando la aplicación.
+
+## Pruebas
+
+Como mencione antes solo he realizado pruebas unitarias, dejo ahí una prueba unitaria de la validación de la cedula 😁
+**npm run test**
+
+## ¡Gracias por su tiempo!
+
+Si tienes alguna pregunta o necesitas más información, no dudes en contactarme.
+
+¡Saludos cordiales!
+
+Angel Loor
+angelloor.dev@gmail.com
++593 99 867 9628

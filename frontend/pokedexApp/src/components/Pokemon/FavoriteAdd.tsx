@@ -9,9 +9,12 @@ import {
 
 export default function FavoriteAdd(props: any) {
 	const { id } = props;
+
+	// useState
 	const [isFavorite, setIsFavorite] = useState<any>(null);
 	const [reloadCheck, setReloadCheck] = useState(false);
 
+	// useEffect
 	useEffect(() => {
 		(async () => {
 			try {
@@ -23,10 +26,12 @@ export default function FavoriteAdd(props: any) {
 		})();
 	}, [id, reloadCheck]);
 
+	// recargamos la lista de favoritos
 	const onReloadCheckFavorite = () => {
 		setReloadCheck((prev) => !prev);
 	};
 
+	// agregar a favoritos
 	const addFavorite = async () => {
 		try {
 			await addPokemonFavoriteStorage(id);
@@ -36,6 +41,7 @@ export default function FavoriteAdd(props: any) {
 		}
 	};
 
+	// remover de favoritos
 	const removeFavorite = async () => {
 		try {
 			await removePokemonFavoriteStorage(id);

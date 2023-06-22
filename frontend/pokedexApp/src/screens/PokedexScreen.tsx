@@ -12,11 +12,15 @@ import { commonStyles } from '../styles/common';
 export default function PokedexScreen() {
 	const url: string = getInitialUrlPokemons();
 
+	// UseState
 	const [isSearch, setIsSearch]: any = useState(false);
 	const [pokemons, setPokemons]: any = useState([]);
 	const [nextUrl, setNextUrl]: any = useState(url);
 	const [filterPokemons, setFilterPokemons]: any = useState([]);
-
+	/**
+	 * Funcion que permite buscar un pokemon por nombre o id
+	 * @param nameOrIdPokemon nombre o id del pokemon
+	 */
 	const searchPokemon = (nameOrIdPokemon: string) => {
 		if (nameOrIdPokemon === '') {
 			setIsSearch(false);
@@ -33,12 +37,15 @@ export default function PokedexScreen() {
 		}
 	};
 
+	// UseEffect
 	useEffect(() => {
 		(async () => {
 			await loadPokemons();
 		})();
 	}, []);
-
+	/**
+	 * Funcion que permite cargar los pokemons (Infinite Scroll)
+	 */
 	const loadPokemons = async () => {
 		try {
 			const pokemonsAPI = await getPokemons(nextUrl);

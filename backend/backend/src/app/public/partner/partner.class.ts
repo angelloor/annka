@@ -12,7 +12,7 @@ import {
 	view_partner_query_read,
 	view_partner_specific_read,
 } from './partner.store';
-// import * as csv from "csvtojson";
+
 const csv = require('csvtojson');
 
 export class Partner {
@@ -263,82 +263,90 @@ export class Partner {
 			/**
 			 * Transformamos el csv a json
 			 */
-			const partnersArray: Partner[] | any = await csv().fromFile(pathCSV);
 
+			let partnersArray: Partner[] | any = [];
 			let messages: any[] = [];
+			/**
+			 * Esperamos 1 segundo para que se cree el archivo
+			 */
+			setTimeout(async () => {
+				if (fs.existsSync(pathCSV)) {
+					partnersArray = await csv().fromFile(pathCSV);
 
-			for (const partner of partnersArray) {
-				this.queryRead(partner)
-					.then(async (_partners: Partner[]) => {
-						if (_partners.length > 0) {
-							/**
-							 * Existe - Lo actualizamos
-							 */
-							/**
-							 * Obtenemos el id del partner
-							 */
-							const id_partner: string | any = _partners[0].id_partner;
-							/**
-							 * Mutamos el objeto para que tenga el id
-							 */
-							let _partner: any = {
-								id_partner: parseInt(id_partner),
-								...partner,
-							};
-							/**
-							 * Validamos el objeto y si todo esta Ok lo actualizamos
-							 */
-							await validation(_partner, '/update')
-								.then((partner: Partner) => {
-									messages.push(partner);
+					for (const partner of partnersArray) {
+						this.queryRead(partner)
+							.then(async (_partners: Partner[]) => {
+								if (_partners.length > 0) {
 									/**
-									 * Si el array de mensajes es igual al array de partners, resolvemos
+									 * Existe - Lo actualizamos
 									 */
-									if (partnersArray.length === messages.length) {
-										resolve(messages);
-									}
-								})
-								.catch((err: MessageAPI | any) => {
-									messages.push(err);
 									/**
-									 * Si el array de mensajes es igual al array de partners, resolvemos
+									 * Obtenemos el id del partner
 									 */
-									if (partnersArray.length === messages.length) {
-										resolve(messages);
-									}
-								});
-						} else {
-							/**
-							 * No existe - Lo creamos
-							 */
-							/**
-							 * Validamos el objeto y si todo esta Ok lo actualizamos
-							 */
-							await validation(partner, '/create')
-								.then((partner: Partner) => {
-									messages.push(partner);
+									const id_partner: string | any = _partners[0].id_partner;
 									/**
-									 * Si el array de mensajes es igual al array de partners, resolvemos
+									 * Mutamos el objeto para que tenga el id
 									 */
-									if (partnersArray.length === messages.length) {
-										resolve(messages);
-									}
-								})
-								.catch((err: MessageAPI | any) => {
-									messages.push(err);
+									let _partner: any = {
+										id_partner: parseInt(id_partner),
+										...partner,
+									};
 									/**
-									 * Si el array de mensajes es igual al array de partners, resolvemos
+									 * Validamos el objeto y si todo esta Ok lo actualizamos
 									 */
-									if (partnersArray.length === messages.length) {
-										resolve(messages);
-									}
-								});
-						}
-					})
-					.catch((error: any) => {
-						reject(error);
-					});
-			}
+									await validation(_partner, '/update')
+										.then((partner: Partner) => {
+											messages.push(partner);
+											/**
+											 * Si el array de mensajes es igual al array de partners, resolvemos
+											 */
+											if (partnersArray.length === messages.length) {
+												resolve(messages);
+											}
+										})
+										.catch((err: MessageAPI | any) => {
+											messages.push(err);
+											/**
+											 * Si el array de mensajes es igual al array de partners, resolvemos
+											 */
+											if (partnersArray.length === messages.length) {
+												resolve(messages);
+											}
+										});
+								} else {
+									/**
+									 * No existe - Lo creamos
+									 */
+									/**
+									 * Validamos el objeto y si todo esta Ok lo actualizamos
+									 */
+									await validation(partner, '/create')
+										.then((partner: Partner) => {
+											messages.push(partner);
+											/**
+											 * Si el array de mensajes es igual al array de partners, resolvemos
+											 */
+											if (partnersArray.length === messages.length) {
+												resolve(messages);
+											}
+										})
+										.catch((err: MessageAPI | any) => {
+											messages.push(err);
+											/**
+											 * Si el array de mensajes es igual al array de partners, resolvemos
+											 */
+											if (partnersArray.length === messages.length) {
+												resolve(messages);
+											}
+										});
+								}
+							})
+							.catch((error: any) => {
+								reject(error);
+							});
+					}
+				}
+			}, 500);
 		});
 	}
 }

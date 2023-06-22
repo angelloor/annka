@@ -5,7 +5,9 @@ import { Client } from 'pg';
 dotenv.config({
 	path: path.join(path.resolve('./env'), process.env.NODE_ENV + '.env'),
 });
-
+/**
+ * Client for PostgreSQL
+ */
 const clientANNKAPostgreSQL = new Client({
 	user: process.env.BD_PG_USER,
 	host: process.env.BD_PG_HOST,

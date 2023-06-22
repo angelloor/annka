@@ -16,13 +16,17 @@ import { appConfig } from '../app.config';
 import { getColorByPokemonType, returnFormatedOrder } from '../utils/others';
 
 export default function PokemonCard(props: any) {
-	const navigation: any = useNavigation();
 	const { pokemon }: any = props;
 
+	const navigation: any = useNavigation();
+
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(pokemon.type);
 
 	const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles };
-
+	/**
+	 * Navegar a la pantalla de detalle del pokemon
+	 */
 	const goToPokemon = () => {
 		navigation.navigate('StackPokemon', { id: pokemon.id });
 	};

@@ -8,6 +8,7 @@ import { getColorByPokemonType, returnFormatedOrder } from '../../utils/others';
 export default function PokemonHeader(props: any) {
 	const { name, order, type, image } = props;
 
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(type);
 
 	const bgStyles = { backgroundColor: pokemonColor, ...styles.background };

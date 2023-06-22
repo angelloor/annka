@@ -7,6 +7,7 @@ import { getColorByPokemonType } from '../../utils/others';
 export default function PokemonStat(props: any) {
 	const { stats, type } = props;
 
+	// obtener el color de acuerdo al tipo de pokemon
 	const pokemonColor = getColorByPokemonType(type);
 
 	const colors: any = {
@@ -15,7 +16,11 @@ export default function PokemonStat(props: any) {
 		green: '#00ff00',
 		base: pokemonColor,
 	};
-
+	/**
+	 * Pintamos la barra de acuerdo al numero de la estadistica
+	 * @param num numero de la estadistica
+	 * @returns
+	 */
 	const barStyles = (num: number) => {
 		const color =
 			num <= 30

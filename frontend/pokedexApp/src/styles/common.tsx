@@ -11,7 +11,7 @@ export const commonStyles = StyleSheet.create({
 		padding: 10,
 		borderRadius: 10,
 		marginHorizontal: 10,
-		marginTop: 30,
+		marginTop: 40,
 	},
 	spinner: {
 		marginTop: 20,

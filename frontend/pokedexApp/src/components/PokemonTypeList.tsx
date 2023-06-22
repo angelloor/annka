@@ -19,10 +19,14 @@ export default function PokemonTypeList(props: any) {
 	} = props;
 	const { name } = params;
 
+	// useState
 	const [isSearch, setIsSearch]: any = useState(false);
 	const [pokemons, setPokemons] = useState([]);
 	const [filterPokemons, setFilterPokemons]: any = useState([]);
-
+	/**
+	 * Funcion que permite buscar un pokemon por nombre o id
+	 * @param nameOrIdPokemon nombre o id del pokemon
+	 */
 	const searchPokemon = (nameOrIdPokemon: string) => {
 		if (nameOrIdPokemon === '') {
 			setIsSearch(false);
@@ -39,6 +43,7 @@ export default function PokemonTypeList(props: any) {
 		}
 	};
 
+	// useEffect
 	useEffect(() => {
 		navigation.setOptions({
 			headerRight: () => null,
@@ -57,11 +62,15 @@ export default function PokemonTypeList(props: any) {
 		})();
 	}, [params]);
 
-	const loadMoreInformationPokemon = async (listPok: any) => {
+	/**
+	 * Funcion que permite cargar mas informacion de los pokemons
+	 * @param pokemonList lista de pokemons
+	 */
+	const loadMoreInformationPokemon = async (pokemonList: any[]) => {
 		try {
 			const pokemonsList: any = [];
 
-			for await (const pokemon of listPok) {
+			for await (const pokemon of pokemonList) {
 				const pokemonDetail = await getPokemonDetailByUrl(pokemon.pokemon.url);
 
 				pokemonsList.push({

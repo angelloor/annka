@@ -10,10 +10,15 @@ import { commonStyles } from '../styles/common';
 export default function FavoriteScreen() {
 	const auth = true;
 
+	// UseState
 	const [isSearch, setIsSearch]: any = useState(false);
 	const [pokemons, setPokemons] = useState([]);
 	const [filterPokemons, setFilterPokemons]: any = useState([]);
 
+	/**
+	 * Funcion que permite buscar un pokemon por nombre o id
+	 * @param nameOrIdPokemon nombre o id del pokemon
+	 */
 	const searchPokemon = (nameOrIdPokemon: string) => {
 		if (nameOrIdPokemon === '') {
 			setIsSearch(false);
@@ -30,6 +35,7 @@ export default function FavoriteScreen() {
 		}
 	};
 
+	// useFocusEffect
 	useFocusEffect(
 		useCallback(() => {
 			if (auth) {

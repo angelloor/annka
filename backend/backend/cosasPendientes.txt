@@ -1,6 +1,0 @@
-- Revisar el envio por lotes, ya que al momento de enviar el csv si se envia 2 veces falla,
-- Pruebas unitarias
-- Pruebas de integracion
-- Docker
-- Interfaz en HTML
-- Documentacion

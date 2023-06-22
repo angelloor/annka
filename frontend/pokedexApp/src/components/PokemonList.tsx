@@ -12,6 +12,9 @@ import PokemonCard from './PokemonCard';
 export default function PokemonList(props: any) {
 	const { pokemons, loadPokemons, MorePokemons, isSearch }: any = props;
 
+	/**
+	 * Funcion que permite cargar mas pokemones (Infinite Scroll)
+	 */
 	const loadMore = () => {
 		loadPokemons();
 	};
